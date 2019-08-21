@@ -12,7 +12,10 @@ $VideoUrls
  
 ForEach ($video in $VideoUrls){
 Write-Host ("Downloading " + $video.innerText)
-.\youtube-dl.exe $video.URL
+.\youtube-dl.exe $video.URL -v
+
+# if not working
+#youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
 }
 
 #to download https://www.youtube.com/watch?v=Wet5OM7RR8Q&list=PLGpxiRQ20U6NSYZNdWMzFogtFT-9lu96z

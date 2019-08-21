@@ -2,7 +2,7 @@
    $bitrate = 160
    $channels = 2
 
-   $folder = 'C:\Users\vanaq\Downloads\PS1\2019-01-30'
+   $folder = Read-Host 'enter URL: '
    
    foreach($inputFile in get-childitem $folder -recurse -Include "*.mp4","*.webm")
    { 
