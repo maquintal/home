@@ -1,0 +1,23 @@
+{
+  "name": "whattobrew",
+  "version": "1.0.0",
+  "description": "web app for beer brewing recipe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maquintal/WhatToBrew.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maquintal/WhatToBrew/issues"
+  },
+  "homepage": "https://github.com/maquintal/WhatToBrew#readme",
+  "dependencies": {
+    "react-csv": "^1.1.1"
+  }
+}
