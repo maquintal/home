@@ -13,6 +13,8 @@
 #   Version: 1.3
 #   Doc: http://www.techguy.at/tag/backupscript/
 #   PSVersion tested: 3 and 4
+#
+#   Task Scheduler: powershell.exe -ExecutionPolicy Bypass C:\Users\User\Desktop\home\Dell_E6440-BackupScript.ps1 -RunType $true -Path C:\Users\User\Desktop\home
 #>
 
 Get-ChildItem \\diskstation\BackupMA
