@@ -1,8 +1,6 @@
-﻿#Set-ExecutionPolicy RemoteSigned -Force
+﻿Set-Location "C:\temp\youtubedl"
 
 .\youtube-dl.exe -U
-
-Set-Location "C:\Users\vanaq\Downloads\PS1"
 
 $playlisturl = Read-Host 'enter URL: '
 #$Playlisturl = "https://www.youtube.com/playlist?list=PLkHvEl7zu06o70dpsiVrRbYFLWreD9Jcw"
