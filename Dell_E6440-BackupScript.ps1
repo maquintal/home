@@ -22,7 +22,7 @@ Get-ChildItem \\diskstation\BackupMA
 #Variables, only Change here
 $Destination="\\diskstation\BackupMA" #Copy the Files to this Location
 $Versions="3" #How many of the last Backups you want to keep
-$BackupDirs="C:\Users\User\Documents\BeerSmith2" #What Folders you want to backup
+$BackupDirs="C:\Users\User\Documents\BeerSmith2", "Z:\RecipeDatabase.bsmx" #What Folders you want to backup
 #$ExcludeDirs="C:\Program Files (x86)\OpenVPN\bin", "C:\Program Files (x86)\OpenVPN\config" #This list of Directories will not be copied
 $LogName="Log.txt" #Log Name
 $LoggingLevel="3" #LoggingLevel only for Output in Powershell Window, 1=smart, 3=Heavy
@@ -34,7 +34,7 @@ $RemoveBackupDestination=$false #Remove copied files after Zip, only if $Zip is 
 $SendEmail = $true                   # = $true if you want to enable send report to e-mail (SMTP send)
 $EmailTo   = 'maquintal16@gmail.com'              #user@domain.something (for multiple users use "User01 &lt;user01@example.com&gt;" ,"User02 &lt;user02@example.com&gt;" )
 $EmailFrom = 'vanaquin@hotmail.com'   #matthew@domain 
-$EmailSMTP = 'smtp.bellnet.ca' #smtp server adress, DNS hostname.
+$EmailSMTP = 'smtphm.sympatico.ca' #smtp server adress, DNS hostname.
 
 
 
