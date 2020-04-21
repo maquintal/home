@@ -1,9 +1,8 @@
-﻿#Set-ExecutionPolicy RemoteSigned -Force
+﻿https://www.youtube.com/watch?v=Uq1R79sZATY&list=PL2v1REQ_1p63jJdE2Oklow3VAOkBkDx3V&index=2Set-Location "C:\temp\youtubedl"
 
-Set-Location "C:\Users\vanaq\Downloads\PS1"
+.\youtube-dl.exe -U
 
 $playlisturl = Read-Host 'enter URL: '
-#$Playlisturl = "https://www.youtube.com/playlist?list=PLkHvEl7zu06o70dpsiVrRbYFLWreD9Jcw"
 $VideoUrls= (invoke-WebRequest -uri $Playlisturl).Links | ? {$_.HREF -like "/watch*"} | `
 ? innerText -notmatch ".[0-9]:[0-9]." | ? {$_.innerText.Length -gt 3} | Select innerText, `
 @{Name="URL";Expression={'http://www.youtube.com' + $_.href}} | ? innerText -notlike "*Play all*"
@@ -17,5 +16,3 @@ Write-Host ("Downloading " + $video.innerText)
 # if not working
 #youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
 }
-
-#to download https://www.youtube.com/watch?v=Wet5OM7RR8Q&list=PLGpxiRQ20U6NSYZNdWMzFogtFT-9lu96z
