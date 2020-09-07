@@ -5,7 +5,7 @@ $outputExtension = ".mp3"
 
    $folder = Read-Host 'enter folder path: '
    
-   <#foreach($inputFile in get-childitem $folder -recurse -Include "*.mp4","*.webm")
+   foreach($inputFile in get-childitem $folder -recurse -Include "*.mp4","*.webm")
    { 
      $outputFileName = [System.IO.Path]::GetFileNameWithoutExtension($inputFile.FullName) + $outputExtension;
      $outputFileName = [System.IO.Path]::Combine($inputFile.DirectoryName, $outputFileName);
@@ -18,7 +18,7 @@ $outputExtension = ".mp3"
      $processArgs = "-I dummy -vvv `"$($inputFile.FullName)`" --sout=#transcode{acodec=`"mp3`",ab=`"$bitrate`",`"channels=$channels`"}:standard{access=`"file`",mux=`"wav`",dst=`"$outputFileName`"} vlc://quit"
      
      start-process $processName $processArgs -wait
-   }#>
+   }
 
-  get-childitem $folder -recurse -Include "*.mp4","*.webm" | Remove-Item
-  get-childitem $folder -recurse -Include "*.mp3}" | rename-item -newname { [io.path]::ChangeExtension($_.name, "mp3") }
+  #get-childitem $folder -recurse -Include "*.mp4","*.webm" | Remove-Item
+  #get-childitem $folder -recurse -Include "*.mp3}" | rename-item -newname { [io.path]::ChangeExtension($_.name, "mp3") }

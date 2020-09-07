@@ -1,4 +1,4 @@
-﻿https://www.youtube.com/watch?v=Uq1R79sZATY&list=PL2v1REQ_1p63jJdE2Oklow3VAOkBkDx3V&index=2Set-Location "C:\temp\youtubedl"
+﻿Set-Location "C:\temp\youtubedl"
 
 .\youtube-dl.exe -U
 
@@ -14,5 +14,7 @@ Write-Host ("Downloading " + $video.innerText)
 .\youtube-dl.exe $video.URL -v
 
 # if not working
-#youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
+#.\youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
 }
+
+#.\youtube-dl -i -f mp4 --yes-playlist https://www.youtube.com/playlist?list=PL-u26gILWGF01D893ULmT8UfWb_ddEfnG
