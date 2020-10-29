@@ -16,41 +16,72 @@
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 
+#include <PubSubClient.h>
+
 // GLOBAL VARIABLES //
 char auth[] = "U-zQXrRDuQ6taLOWfWVOZrgJTCLa3Zde";
 char ssid[] = "BELL950";
 char pass[] = "POUDLARD7438";
+const char *ID = "Example_Switch";  // Name of our device, must be unique
+const char *TOPIC = "room/light";  // Topic to subcribe to 
 
 // VARIABLES //
-// We make these values volatile, as they are used in interrupt context
-// volatile 
-bool pinChanged = false;
-//volatile
-int virtualBtnValue = 0;
+int virtualBtnState = 0;
 
 // BLYNK OBJECTS //
-WidgetLED led1(V3);
+WidgetLED ledV3(V3);
+
+// MQTT OBJECTS //
+IPAddress broker(192,168,2,12); // IP address of your MQTT broker eg. 192.168.1.50
+WiFiClient wclient;
+PubSubClient client(wclient); // Setup MQTT client 
 
 // FUNCTIONS //
 
 // This function will be called every time Button Widget
 // in Blynk app writes values to the Virtual Pin V2
 BLYNK_WRITE(V2) {
-  int virtualBtnValue = param.asInt(); // assigning incoming value from pin V2 to a variable
+  int virtualBtnState = param.asInt(); // assigning incoming value from pin V2 to a variable
 
-  Serial.println(virtualBtnValue);
+  Serial.println(virtualBtnState);
+  //if (virtualBtnState == 1) {
+  //  Serial.println("on");
+  //  Blynk.virtualWrite(V3, 0);
+  //} else {
+  //  Serial.println("off");
+  //  Blynk.virtualWrite(V3, 1023);
+  //}
 
-  if (virtualBtnValue = 1) {
-    led1.on();
+  // If state has changed...
+  if (virtualBtnState == 1) {
+    ledV3.on();
+    client.publish(TOPIC, "on");
+    Serial.println("TOPIC"   " => on");
   } else {
-    led1.off();
+    ledV3.off();
+    Serial.println("TOPIC"   " => off");
+    client.publish(TOPIC, "off");
   }
   
-  //if (virtualBtnValue = 0) {
-  //  pinChanged = false;
-  //} else if (virtualBtnValue = 1) {
-  //  pinChanged = true;
-  //}
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    if (client.connect(ID)) {
+      Serial.println("connected");
+      Serial.print("Publishing to: ");
+      Serial.println(TOPIC);
+      Serial.println('\n');
+
+    } else {
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
 }
 
 // STRUCTURE SKETCH SETUP //
@@ -60,24 +91,17 @@ void setup() {
 
   Blynk.begin(auth, ssid, pass);
 
-  // Make pin 2 HIGH by default
-  pinMode(2, INPUT_PULLUP);
-  
-  // Attach INT to our handler
-//  attachInterrupt(digitalPinToInterrupt(2), checkPin, CHANGE);
+  client.setServer(broker, 1883);
 }
 
 // STRUCTURE SKETCH LOOP //
 void loop() {
   Blynk.run();
 
-  //Serial.println(pinChanged);
-  // process received value
-    
-  // Mark pin value changed
-  //if (pinChanged = true) {
-  //  led1.on();
-  //} else {
-  //  led1.off();
-  //}
+  if (!client.connected())  // Reconnect if connection is lost
+  {
+    reconnect();
+  }
+  client.loop();
+
 }
