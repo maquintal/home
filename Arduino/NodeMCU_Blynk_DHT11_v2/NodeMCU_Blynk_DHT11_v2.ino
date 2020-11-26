@@ -22,8 +22,16 @@
 // Constants
 //--------------------------------------
 #define BLYNK_PRINT Serial                        // not sure if should be on top !?
+
+// Uncomment whatever type you're using!
+//#define DHTTYPE DHT11                           // DHT 11
+//#define DHTTYPE DHT22                           // DHT 22, AM2302, AM2321
+//#define DHTTYPE DHT21                           // DHT 21, AM2301
+
 #define DHTTYPE DHT11                             // DHT 11
+
 #define DHTPIN 4                                  // NodeMcu Digital Pin 4 D2 Arduino Crossover
+
 char auth[] = "5WQGNSvVFn61J8i3ZjWykcOAAup0CIBz"; // Blynk Auth Token
 char ssid[] = "BELL950";                          // Your WiFi credentials (SSID)
 char pass[] = "POUDLARD7438";                     // Your WiFi credentials (PASSWORD)
@@ -32,12 +40,6 @@ char pass[] = "POUDLARD7438";                     // Your WiFi credentials (PASS
 // Objects
 //--------------------------------------
 DHT dht(DHTPIN, DHTTYPE);                         // Set DHT Object with Digital Pin and Senor Type
-
-// Uncomment whatever type you're using!
-//#define DHTTYPE DHT11                           // DHT 11
-//#define DHTTYPE DHT22                           // DHT 22, AM2302, AM2321
-//#define DHTTYPE DHT21                           // DHT 21, AM2301
-
 BlynkTimer timer;
 
 //--------------------------------------
@@ -61,6 +63,9 @@ void sendSensor() {
   Blynk.virtualWrite(V1, temperature);
 }
 
+//--------------------------------------
+// Main
+//--------------------------------------
 void setup() {
   // Debug console
   Serial.begin(9600);

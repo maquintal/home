@@ -33,9 +33,9 @@ BLYNK_WRITE(V2)
     lcd.setCursor(0, 0); // Set the cursor on the first column and first row.
     lcd.print("pin value");
     lcd.setCursor(10, 0);
-  lcd.print(pinValue); // Print the string "Hello World!"
-  lcd.setCursor(2, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
-  lcd.print("LCD tutorial");
+    lcd.print(pinValue); // Print the string "Hello World!"
+    lcd.setCursor(2, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
+    lcd.print("LCD tutorial");
 }
 
 void setup() {
@@ -49,7 +49,8 @@ void setup() {
   //lcd.begin();
   //lcd.home();
   //lcd.print("Hello, NodeMCU");
-    // Initiate the LCD:
+
+  // Initiate the LCD:
   lcd.init();
   lcd.backlight();
 
