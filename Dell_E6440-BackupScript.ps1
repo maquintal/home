@@ -19,25 +19,50 @@
 
 Get-ChildItem \\diskstation\BackupMA
 
-#Variables, only Change here
-$Destination="\\diskstation\BackupMA" #Copy the Files to this Location
-$Versions="3" #How many of the last Backups you want to keep
-$BackupDirs="C:\Users\User\Documents\BeerSmith2", "Z:\RecipeDatabase.bsmx", "\\diskstation\BackupMA\Impots" #What Folders you want to backup
-#$ExcludeDirs="C:\Program Files (x86)\OpenVPN\bin", "C:\Program Files (x86)\OpenVPN\config" #This list of Directories will not be copied
-$LogName="Log.txt" #Log Name
-$LoggingLevel="3" #LoggingLevel only for Output in Powershell Window, 1=smart, 3=Heavy
-$Zip=$true #Zip the Backup Destination
-$RemoveBackupDestination=$false #Remove copied files after Zip, only if $Zip is true
+####################################
+#
+# SCRIPT VARIABLES
+#
+####################################
+
+#Copy the Files to this Location
+$Destination="\\diskstation\BackupMA"
+
+#How many of the last Backups you want to keep
+$Versions="3"
+#What Folders you want to backup
+
+$BackupDirs="C:\Users\User\Documents\BeerSmith2", "Z:\RecipeDatabase.bsmx", "\\diskstation\BackupMA\Impots", "C:\Users\User\OneDrive\Budget"
+
+#This list of Directories will not be copied
+#$ExcludeDirs="C:\Program Files (x86)\OpenVPN\bin", "C:\Program Files (x86)\OpenVPN\config"
+
+#Log Name
+$LogName="Log.txt"
+
+#LoggingLevel only for Output in Powershell Window, 1=smart, 3=Heavy
+$LoggingLevel="3"
+
+#Zip the Backup Destination
+$Zip=$true
+
+#Remove copied files after Zip, only if $Zip is true
+$RemoveBackupDestination=$false
 
 
 #Send Mail Settings
-$SendEmail = $true                   # = $true if you want to enable send report to e-mail (SMTP send)
-$EmailTo   = 'maquintal16@gmail.com'              #user@domain.something (for multiple users use "User01 &lt;user01@example.com&gt;" ,"User02 &lt;user02@example.com&gt;" )
-$EmailFrom = 'vanaquin@hotmail.com'   #matthew@domain 
-$EmailSMTP = 'smtphm.sympatico.ca' #smtp server adress, DNS hostname.
+$SendEmail = $true                     # = $true if you want to enable send report to e-mail (SMTP send)
+$EmailTo   = 'maquintal16@gmail.com'   # user@domain.something (for multiple users use "User01 &lt;user01@example.com&gt;" ,"User02 &lt;user02@example.com&gt;" )
+$EmailFrom = 'vanaquin@hotmail.com'    # matthew@domain 
+#$EmailSMTP = 'smtphm.sympatico.ca'     # smtp server adress, DNS hostname.
+$EmailSMTP = 'smtp.gmail.com'
 
 
-
+####################################
+#
+# GLOBAL VARIABLES
+#
+####################################
 #STOP-no changes from here
 #STOP-no changes from here
 #Settings - do not change anything from here
@@ -48,7 +73,11 @@ $Count=0
 $ErrorCount=0
 $StartDate=Get-Date #-format dd.MM.yyyy-HH:mm:ss
 
-#FUNCTION
+####################################
+#
+# FUNCTIONS
+#
+####################################
 #Logging
 Function Logging ($State, $Message) {
     $Datum=Get-Date -format dd.MM.yyyy-HH:mm:ss
@@ -170,7 +199,11 @@ Function Make-Backup {
     }
 }
 
-
+####################################
+#
+# MAIN
+#
+####################################
 #Bcreate Backup Dir
 Create-Backupdir
 Logging "INFO" "----------------------"

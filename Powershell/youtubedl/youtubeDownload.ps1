@@ -17,4 +17,4 @@ Write-Host ("Downloading " + $video.innerText)
 #.\youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?v=7Vy8970q0Xc&list=PLwJ2VKmefmxpUJEGB1ff6yUZ5Zd7Gegn2'
 }
 
-#.\youtube-dl -i -f mp4 --yes-playlist https://www.youtube.com/playlist?list=PL-u26gILWGF01D893ULmT8UfWb_ddEfnG
+#.\youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/playlist?list=PL-u26gILWGF1ZkM4FCauYMt0WKKrIN4hL'
