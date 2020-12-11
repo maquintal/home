@@ -29,22 +29,12 @@ BLYNK_WRITE(V5)
   // process received value
   Serial.println(pinValue);
   
-  lcd.setCursor(0, 0); // Set the cursor on the first column and first row.
-  lcd.print("pin value");
-  lcd.setCursor(10, 0);
-  lcd.print(pinValue); // Print the string "Hello World!"
-  lcd.setCursor(2, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
-  lcd.print("LCD tutorial");
-
-  
-  // set the display to automatically scroll:
-  //lcd.autoscroll();
-  //while (pinValue = 1) {
-  //  for (int thisChar = 0; thisChar < 16; thisChar++) {
-  //    lcd.scrollDisplayLeft();  
-  //    delay(500);
-  //  }
-  //}
+    lcd.setCursor(0, 0); // Set the cursor on the first column and first row.
+    lcd.print("pin value");
+    lcd.setCursor(10, 0);
+    lcd.print(pinValue); // Print the string "Hello World!"
+    lcd.setCursor(2, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
+    lcd.print("LCD tutorial");
 }
 
 void setup() {
@@ -58,7 +48,8 @@ void setup() {
   //lcd.begin();
   //lcd.home();
   //lcd.print("Hello, NodeMCU");
-    // Initiate the LCD:
+
+  // Initiate the LCD:
   lcd.init();
   lcd.backlight();
 

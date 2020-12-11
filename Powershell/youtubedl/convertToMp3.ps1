@@ -20,5 +20,5 @@ $outputExtension = ".mp3"
      start-process $processName $processArgs -wait
    }
 
-  #get-childitem $folder -recurse -Include "*.mp4","*.webm" | Remove-Item
+  get-childitem $folder -recurse -Include "*.mp4","*.webm" | Remove-Item
   #get-childitem $folder -recurse -Include "*.mp3}" | rename-item -newname { [io.path]::ChangeExtension($_.name, "mp3") }
