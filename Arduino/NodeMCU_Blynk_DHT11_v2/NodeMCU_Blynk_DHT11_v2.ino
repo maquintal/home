@@ -32,7 +32,7 @@
 
 #define DHTPIN 4                                  // NodeMcu Digital Pin 4 D2 Arduino Crossover
 
-char auth[] = "5WQGNSvVFn61J8i3ZjWykcOAAup0CIBz"; // Blynk Auth Token
+char auth[] = "kRD1jZFpphskl31TLCUmKZdjqd0v3IpI"; // Blynk Auth Token
 char ssid[] = "BELL950";                          // Your WiFi credentials (SSID)
 char pass[] = "POUDLARD7438";                     // Your WiFi credentials (PASSWORD)
 
@@ -59,8 +59,8 @@ void sendSensor() {
   }
   // You can send any value at any time.
   // Please don't send more that 10 values per second.
-  Blynk.virtualWrite(V0, humidity);
-  Blynk.virtualWrite(V1, temperature);
+  Blynk.virtualWrite(V4, humidity);
+  Blynk.virtualWrite(V5, temperature);
 }
 
 //--------------------------------------
@@ -74,8 +74,8 @@ void setup() {
   
   dht.begin();
 
-  // Setup a function to be called every 60 seconds
-  timer.setInterval(60000L, sendSensor);
+  // Setup a function to be called every 2 seconds
+  timer.setInterval(2000L, sendSensor);
 }
 
 void loop()
