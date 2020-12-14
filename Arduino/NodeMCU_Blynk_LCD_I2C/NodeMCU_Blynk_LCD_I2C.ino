@@ -10,7 +10,6 @@
 // Wiring: SDA pin is connected to A4 and SCL pin to A5.
 // Connect to LCD via I2C, default address 0x27 (A0-A2 not jumpered)
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4); // Change to (0x27,16,2) for 16x2 LCD.
-//LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -23,7 +22,7 @@ char pass[] = "POUDLARD7438";
 
 // This function will be called every time Slider Widget
 // in Blynk app writes values to the Virtual Pin V1
-BLYNK_WRITE(V2)
+BLYNK_WRITE(V5)
 {
   int pinValue = param.asInt(); // assigning incoming value from pin V1 to a variable
 
