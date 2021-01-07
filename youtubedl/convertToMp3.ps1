@@ -4,9 +4,11 @@ $outputExtension = ".mp3"
    $channels = 2
 
    $folder = Read-Host 'enter folder path: '
+   $counter = 1
    
    foreach($inputFile in get-childitem $folder -recurse -Include "*.mp4","*.webm")
    { 
+     Write-Progress -Activity 'Processing Input File' -CurrentOperation $inputFile -PercentComplete (($counter / (Get-ChildItem $folder).Length) * 100)
      $outputFileName = [System.IO.Path]::GetFileNameWithoutExtension($inputFile.FullName) + $outputExtension;
      $outputFileName = [System.IO.Path]::Combine($inputFile.DirectoryName, $outputFileName);
      
@@ -18,6 +20,7 @@ $outputExtension = ".mp3"
      $processArgs = "-I dummy -vvv `"$($inputFile.FullName)`" --sout=#transcode{acodec=`"mp3`",ab=`"$bitrate`",`"channels=$channels`"}:standard{access=`"file`",mux=`"wav`",dst=`"$outputFileName`"} vlc://quit"
      
      start-process $processName $processArgs -wait
+     $counter++
    }
 
   #get-childitem $folder -recurse -Include "*.mp4","*.webm" | Remove-Item

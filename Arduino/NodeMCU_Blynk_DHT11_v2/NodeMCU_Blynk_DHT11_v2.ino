@@ -10,6 +10,7 @@
  *    V1 : Blynk Virtual Pin 1 : Value Display widget attached to V1
  *  
  **********************************************************************************************/
+#define BLYNK_PRINT Serial                        // not sure if should be on top !?
 
 //--------------------------------------
 // Import Libraries
@@ -21,7 +22,6 @@
 //--------------------------------------
 // Constants
 //--------------------------------------
-#define BLYNK_PRINT Serial                        // not sure if should be on top !?
 
 // Uncomment whatever type you're using!
 //#define DHTTYPE DHT11                           // DHT 11
@@ -59,8 +59,15 @@ void sendSensor() {
   }
   // You can send any value at any time.
   // Please don't send more that 10 values per second.
-  Blynk.virtualWrite(V4, humidity);
-  Blynk.virtualWrite(V5, temperature);
+  
+  Blynk.virtualWrite(V0, humidity);
+  Blynk.virtualWrite(V1, temperature);
+
+  // Make sure that your sensor iw working properly before put into production
+  // Serial.print("Humidity is: ");
+  // Serial.println(humidity);
+  // Serial.print("Temperature is: ");
+  // Serial.println(temperature);
 }
 
 //--------------------------------------
