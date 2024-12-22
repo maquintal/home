@@ -1,3 +1,22 @@
+#include <BearSSLHelpers.h>
+#include <CertStoreBearSSL.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WiFiAP.h>
+#include <ESP8266WiFiGeneric.h>
+#include <ESP8266WiFiMulti.h>
+#include <ESP8266WiFiSTA.h>
+#include <ESP8266WiFiScan.h>
+#include <ESP8266WiFiType.h>
+#include <WiFiClient.h>
+#include <WiFiClientSecure.h>
+#include <WiFiClientSecureAxTLS.h>
+#include <WiFiClientSecureBearSSL.h>
+#include <WiFiServer.h>
+#include <WiFiServerSecure.h>
+#include <WiFiServerSecureAxTLS.h>
+#include <WiFiServerSecureBearSSL.h>
+#include <WiFiUdp.h>
+
 /**********************************************************************************************
  *  Description
  *    This sketch shows how value can be pushed from NodeMCU to the Blynk App.
@@ -32,8 +51,8 @@
 
 #define DHTPIN 4                                  // NodeMcu Digital Pin 4 D2 Arduino Crossover
 
-char auth[] = "kRD1jZFpphskl31TLCUmKZdjqd0v3IpI"; // Blynk Auth Token
-char ssid[] = "BELL950";                          // Your WiFi credentials (SSID)
+char auth[] = "5WQGNSvVFn61J8i3ZjWykcOAAup0CIBz"; // Blynk Auth Token
+char ssid[] = "BELL684";                          // Your WiFi credentials (SSID)
 char pass[] = "POUDLARD7438";                     // Your WiFi credentials (PASSWORD)
 
 //--------------------------------------
@@ -78,6 +97,7 @@ void setup() {
   Serial.begin(9600);
 
   Blynk.begin(auth, ssid, pass);
+  WiFi.hostname("Ragnar"); // all my devices have Vikings name (I know it's geek)
   
   dht.begin();
 

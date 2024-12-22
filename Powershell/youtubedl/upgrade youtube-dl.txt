@@ -1,1 +1,0 @@
-PS CUsersvanaqDownloadsPS1 .\youtube-dl.exe -U

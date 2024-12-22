@@ -1,5 +1,4 @@
-﻿#C:\Users\vanaq\Downloads\PS1\pref2C:\Users\vanaq\Downloads\PS1\pref2C:\Users\vanaq\Downloads\PS1\pref2C:\Users\vanaq\Downloads\PS1\pref2   
-$outputExtension = ".mp3"
+﻿$outputExtension = ".mp3"
    $bitrate = 160
    $channels = 2
 

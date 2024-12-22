@@ -32,7 +32,7 @@ $Destination="\\diskstation\BackupMA"
 $Versions="3"
 #What Folders you want to backup
 
-$BackupDirs="C:\Users\User\Documents\BeerSmith2", "Z:\RecipeDatabase.bsmx", "\\diskstation\BackupMA\Impots", "C:\Users\User\OneDrive\Budget"
+$BackupDirs="C:\Users\User\Documents\BeerSmith2", "\\diskstation.local\BAMAQ\RecipeDatabase.bsmx", "\\diskstation\BackupMA\Impots", "C:\Users\User\OneDrive\Budget"
 
 #This list of Directories will not be copied
 #$ExcludeDirs="C:\Program Files (x86)\OpenVPN\bin", "C:\Program Files (x86)\OpenVPN\config"
