@@ -12,8 +12,8 @@
      $outputFileName = [System.IO.Path]::Combine($inputFile.DirectoryName, $outputFileName);
      
      #$programFiles = ${env:ProgramFiles(x86)};
-     $programFiles = $env:ProgramFiles;
-     #if($programFiles -eq $null) { $programFiles = $env:ProgramFiles; }
+     $programFiles = $env:ProgramFiles
+     if($programFiles -eq $null) { $programFiles = $env:ProgramFiles; }
      
      $processName = $programFiles + "\VideoLAN\VLC\vlc.exe"
      $processArgs = "-I dummy -vvv `"$($inputFile.FullName)`" --sout=#transcode{acodec=`"mp3`",ab=`"$bitrate`",`"channels=$channels`"}:standard{access=`"file`",mux=`"wav`",dst=`"$outputFileName`"} vlc://quit"
