@@ -1,4 +1,4 @@
-﻿Set-Location "C:\temp\youtubedl"
+﻿Set-Location "C:\temp\youtubedl\download"
 
 #.\youtube-dl.exe -U
 C:\Users\Admin\Desktop\home\youtubedl\yt-dlp.exe -U
